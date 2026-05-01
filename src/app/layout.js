@@ -1,4 +1,4 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Cormorant_Garamond, Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Providers from "@/components/providers";
 import SiteFooter from "@/components/site-footer";
@@ -14,6 +14,12 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const cormorant = Cormorant_Garamond({
+  variable: "--font-display",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
+
 export const metadata = {
   title: "Tiles Gallery",
   description: "A curated tile gallery showcase built with Next.js and Better Auth.",
@@ -21,10 +27,10 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
+      <html
+        lang="en"
+        className={`${geistSans.variable} ${geistMono.variable} ${cormorant.variable} h-full antialiased`}
+      >
       <body className="min-h-full flex flex-col bg-background text-foreground">
         <Providers>
           <SiteHeader />

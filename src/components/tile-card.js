@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function TileCard({ tile, compact = false }) {
   return (
-    <article className="group overflow-hidden rounded-[2rem] border border-black/10 bg-white shadow-[0_20px_60px_rgba(0,0,0,0.08)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_28px_72px_rgba(0,0,0,0.12)]">
+    <article className="group overflow-hidden rounded-[2rem] border border-black/10 bg-white/85 shadow-[0_20px_60px_rgba(0,0,0,0.08)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_28px_72px_rgba(0,0,0,0.12)]">
       <div className={`relative ${compact ? "aspect-[4/3]" : "aspect-[5/4]"}`}>
         <Image
           src={tile.image}
@@ -15,10 +15,12 @@ export default function TileCard({ tile, compact = false }) {
       <div className="space-y-4 p-5">
         <div className="flex items-start justify-between gap-3">
           <div>
-            <h3 className="text-lg font-semibold tracking-tight text-black">
+            <h3 className="font-display text-3xl font-semibold tracking-tight text-black">
               {tile.title}
             </h3>
-            <p className="mt-1 text-sm text-black/55">{tile.creator}</p>
+            <p className="mt-1 text-xs uppercase tracking-[0.28em] text-black/45">
+              {tile.creator}
+            </p>
           </div>
           <span className="rounded-full bg-black px-3 py-1 text-xs font-medium text-white">
             {tile.currency} {tile.price}

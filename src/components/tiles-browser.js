@@ -4,25 +4,31 @@ import { useDeferredValue, useMemo, useState } from "react";
 
 import TileCard from "@/components/tile-card";
 
-export default function TilesBrowser({ tiles }) {
+export default function TilesBrowser({ tiles, categories = [], initialCategory = "" }) {
   const [query, setQuery] = useState("");
+  const [activeCategory, setActiveCategory] = useState(initialCategory);
   const deferredQuery = useDeferredValue(query);
 
   const filteredTiles = useMemo(() => {
     const normalized = deferredQuery.trim().toLowerCase();
-    if (!normalized) return tiles;
-    return tiles.filter((tile) =>
-      tile.title.toLowerCase().includes(normalized)
-    );
-  }, [deferredQuery, tiles]);
+    return tiles.filter((tile) => {
+      const matchesQuery = normalized
+        ? tile.title.toLowerCase().includes(normalized)
+        : true;
+      const matchesCategory = activeCategory
+        ? tile.category === activeCategory
+        : true;
+      return matchesQuery && matchesCategory;
+    });
+  }, [activeCategory, deferredQuery, tiles]);
 
   return (
     <section className="space-y-8">
-      <div className="rounded-[2rem] border border-black/10 bg-black px-6 py-8 text-white shadow-[0_20px_70px_rgba(0,0,0,0.18)] sm:px-8">
+      <div className="rounded-[2rem] border border-black/10 bg-[#171412] px-6 py-8 text-white shadow-[0_20px_70px_rgba(0,0,0,0.18)] sm:px-8">
         <p className="text-sm uppercase tracking-[0.35em] text-white/45">
           Search the collection
         </p>
-        <h1 className="mt-4 text-4xl font-semibold tracking-tight sm:text-5xl">
+        <h1 className="mt-4 font-display text-5xl font-semibold tracking-tight sm:text-6xl">
           Find a tile by title
         </h1>
         <div className="mt-6">
@@ -37,6 +43,34 @@ export default function TilesBrowser({ tiles }) {
             />
           </label>
         </div>
+      </div>
+
+      <div className="flex flex-wrap gap-2">
+        <button
+          type="button"
+          className={`rounded-full px-4 py-2 text-sm font-medium transition ${
+            !activeCategory
+              ? "bg-black text-white"
+              : "bg-white/70 text-black/65 hover:bg-white"
+          }`}
+          onClick={() => setActiveCategory("")}
+        >
+          All
+        </button>
+        {categories.map((category) => (
+          <button
+            type="button"
+            key={category}
+            className={`rounded-full px-4 py-2 text-sm font-medium transition ${
+              activeCategory === category
+                ? "bg-black text-white"
+                : "bg-white/70 text-black/65 hover:bg-white"
+            }`}
+            onClick={() => setActiveCategory(category)}
+          >
+            {category}
+          </button>
+        ))}
       </div>
 
       <div className="flex items-center justify-between gap-4">

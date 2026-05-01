@@ -24,3 +24,8 @@ export async function getFeaturedTiles(limit = 4) {
   const tiles = await getTiles();
   return tiles.slice(0, limit);
 }
+
+export async function getTileCategories() {
+  const tiles = await getTiles();
+  return Array.from(new Set(tiles.map((tile) => tile.category).filter(Boolean)));
+}

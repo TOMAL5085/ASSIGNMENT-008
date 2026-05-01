@@ -1,20 +1,21 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" fill="none">
   <defs>
-    <linearGradient id="bg" x1="120" y1="120" x2="680" y2="680" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#E7E5E4"/>
-      <stop offset="1" stop-color="#A8A29E"/>
+    <linearGradient id="bg" x1="150" y1="150" x2="1070" y2="1050" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#D8D0C3"/>
+      <stop offset="1" stop-color="#8F8578"/>
     </linearGradient>
+    <pattern id="mosaic" width="180" height="180" patternUnits="userSpaceOnUse">
+      <rect width="180" height="180" fill="none"/>
+      <rect x="16" y="16" width="68" height="68" rx="14" fill="#F8F3EA"/>
+      <rect x="96" y="16" width="68" height="68" rx="14" fill="#C9BFB2"/>
+      <rect x="16" y="96" width="68" height="68" rx="14" fill="#C9BFB2"/>
+      <rect x="96" y="96" width="68" height="68" rx="14" fill="#F8F3EA"/>
+      <path d="M16 16L84 84M96 16L164 84M16 96L84 164M96 96L164 164" stroke="#6C635A" stroke-opacity=".18" stroke-width="4"/>
+    </pattern>
   </defs>
-  <rect width="800" height="800" rx="72" fill="url(#bg)"/>
-  <g opacity=".85">
-    <rect x="118" y="118" width="180" height="180" rx="28" fill="#FAFAF9"/>
-    <rect x="320" y="118" width="180" height="180" rx="28" fill="#D6D3D1"/>
-    <rect x="522" y="118" width="160" height="180" rx="28" fill="#FAFAF9"/>
-    <rect x="118" y="320" width="160" height="180" rx="28" fill="#D6D3D1"/>
-    <rect x="300" y="320" width="220" height="180" rx="28" fill="#FAFAF9"/>
-    <rect x="542" y="320" width="140" height="180" rx="28" fill="#D6D3D1"/>
-    <rect x="118" y="522" width="220" height="160" rx="28" fill="#FAFAF9"/>
-    <rect x="360" y="522" width="160" height="160" rx="28" fill="#D6D3D1"/>
-    <rect x="542" y="522" width="140" height="160" rx="28" fill="#FAFAF9"/>
-  </g>
+  <rect width="1200" height="1200" rx="92" fill="url(#bg)"/>
+  <rect x="98" y="98" width="1004" height="1004" rx="56" fill="url(#mosaic)" opacity=".96"/>
+  <rect x="160" y="160" width="880" height="880" rx="44" stroke="#FFF7EF" stroke-opacity=".45" stroke-width="16"/>
+  <path d="M210 300C340 220 490 210 600 300C710 390 840 395 990 280" stroke="#F8F3EA" stroke-width="42" stroke-linecap="round" opacity=".48"/>
+  <path d="M180 850C340 740 460 760 600 850C740 940 860 950 1040 810" stroke="#FFF7EF" stroke-width="22" stroke-linecap="round" opacity=".38"/>
 </svg>

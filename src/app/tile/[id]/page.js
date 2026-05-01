@@ -3,6 +3,21 @@ import { notFound } from "next/navigation";
 
 import { getTileById } from "@/lib/tiles";
 
+export async function generateMetadata({ params }) {
+  const tile = await getTileById(params.id);
+
+  if (!tile) {
+    return {
+      title: "Tile not found | Tiles Gallery",
+    };
+  }
+
+  return {
+    title: `${tile.title} | Tiles Gallery`,
+    description: tile.description,
+  };
+}
+
 export default async function TileDetailsPage({ params }) {
   const tile = await getTileById(params.id);
 
@@ -30,7 +45,7 @@ export default async function TileDetailsPage({ params }) {
             <p className="text-sm uppercase tracking-[0.35em] text-black/45">
               Single tile details
             </p>
-            <h1 className="text-4xl font-semibold tracking-tight text-black sm:text-5xl">
+            <h1 className="font-display text-5xl font-semibold tracking-tight text-black sm:text-6xl">
               {tile.title}
             </h1>
             <p className="text-base leading-8 text-black/65">

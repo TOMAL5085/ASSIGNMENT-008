@@ -1,12 +1,20 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" fill="none">
   <defs>
-    <linearGradient id="bg" x1="90" y1="100" x2="700" y2="710" gradientUnits="userSpaceOnUse">
+    <linearGradient id="bg" x1="150" y1="120" x2="1060" y2="1080" gradientUnits="userSpaceOnUse">
       <stop stop-color="#111827"/>
-      <stop offset="1" stop-color="#374151"/>
+      <stop offset="1" stop-color="#4B5563"/>
     </linearGradient>
+    <pattern id="geom" width="240" height="240" patternUnits="userSpaceOnUse">
+      <rect width="240" height="240" fill="none"/>
+      <path d="M0 120H240M120 0V240" stroke="#F9FAFB" stroke-opacity=".12" stroke-width="8"/>
+      <path d="M0 0L240 240M240 0L0 240" stroke="#F9FAFB" stroke-opacity=".10" stroke-width="6"/>
+      <rect x="62" y="62" width="116" height="116" rx="20" fill="#F9FAFB" fill-opacity=".06"/>
+    </pattern>
   </defs>
-  <rect width="800" height="800" rx="72" fill="url(#bg)"/>
-  <path d="M120 250H680M120 410H680M120 570H680M250 120V680M410 120V680M570 120V680" stroke="#E5E7EB" stroke-width="26" stroke-linecap="round" opacity=".22"/>
-  <path d="M140 140L660 660" stroke="#F9FAFB" stroke-width="24" stroke-linecap="round" opacity=".6"/>
-  <path d="M660 140L140 660" stroke="#F9FAFB" stroke-width="24" stroke-linecap="round" opacity=".6"/>
+  <rect width="1200" height="1200" rx="92" fill="url(#bg)"/>
+  <rect x="90" y="90" width="1020" height="1020" rx="64" fill="url(#geom)" opacity=".98"/>
+  <path d="M170 930L1030 270" stroke="#F9FAFB" stroke-width="64" stroke-linecap="round" opacity=".18"/>
+  <path d="M180 310L920 1050" stroke="#F9FAFB" stroke-width="28" stroke-linecap="round" opacity=".16"/>
+  <circle cx="892" cy="272" r="84" fill="#F9FAFB" opacity=".08"/>
+  <circle cx="306" cy="920" r="60" fill="#F9FAFB" opacity=".08"/>
 </svg>

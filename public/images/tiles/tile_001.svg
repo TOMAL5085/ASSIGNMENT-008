@@ -1,17 +1,24 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" fill="none">
   <defs>
-    <linearGradient id="bg" x1="120" y1="100" x2="700" y2="720" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#0F172A"/>
-      <stop offset="1" stop-color="#0EA5E9"/>
+    <linearGradient id="bg" x1="180" y1="140" x2="1040" y2="1080" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0B2942"/>
+      <stop offset="1" stop-color="#2B78B0"/>
     </linearGradient>
-    <linearGradient id="shine" x1="180" y1="140" x2="630" y2="650" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#BAE6FD" stop-opacity="0.95"/>
-      <stop offset="1" stop-color="#38BDF8" stop-opacity="0.2"/>
-    </linearGradient>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(600 560) rotate(90) scale(430)">
+      <stop stop-color="#BFE5FF" stop-opacity=".95"/>
+      <stop offset="1" stop-color="#BFE5FF" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="waves" width="180" height="180" patternUnits="userSpaceOnUse">
+      <path d="M0 90C45 40 135 140 180 90" stroke="#EAF7FF" stroke-width="14" stroke-linecap="round" opacity=".52"/>
+      <path d="M0 130C45 80 135 180 180 130" stroke="#D8F0FF" stroke-width="8" stroke-linecap="round" opacity=".32"/>
+    </pattern>
   </defs>
-  <rect width="800" height="800" rx="72" fill="url(#bg)"/>
-  <rect x="84" y="84" width="632" height="632" rx="52" fill="url(#shine)" opacity=".25"/>
-  <path d="M140 520C250 430 330 388 420 322C514 253 592 226 660 200" stroke="#E0F2FE" stroke-width="44" stroke-linecap="round" opacity=".82"/>
-  <path d="M160 620C262 560 334 512 420 444C510 372 586 342 650 310" stroke="#FFFFFF" stroke-width="14" stroke-linecap="round" opacity=".45"/>
-  <circle cx="598" cy="210" r="44" fill="#F8FAFC" opacity=".4"/>
+  <rect width="1200" height="1200" rx="92" fill="url(#bg)"/>
+  <rect x="76" y="76" width="1048" height="1048" rx="66" fill="url(#glow)" opacity=".35"/>
+  <rect x="100" y="100" width="1000" height="1000" rx="56" fill="url(#waves)" opacity=".85"/>
+  <rect x="145" y="145" width="910" height="910" rx="44" stroke="#EAF7FF" stroke-opacity=".55" stroke-width="18"/>
+  <path d="M240 860C350 700 470 640 600 560C730 480 845 390 962 260" stroke="#F7FDFF" stroke-width="46" stroke-linecap="round" opacity=".72"/>
+  <path d="M220 930C360 820 470 760 600 675C740 585 850 490 1000 350" stroke="#DFF3FF" stroke-width="16" stroke-linecap="round" opacity=".38"/>
+  <circle cx="835" cy="290" r="74" fill="#F7FDFF" opacity=".22"/>
+  <circle cx="345" cy="320" r="30" fill="#F7FDFF" opacity=".26"/>
 </svg>

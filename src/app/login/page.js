@@ -1,5 +1,10 @@
 import AuthForm from "@/components/auth-form";
 
+export const metadata = {
+  title: "Login | Tiles Gallery",
+  description: "Login to Tiles Gallery using email, password, or Google.",
+};
+
 export default async function LoginPage({ searchParams }) {
   const params = await searchParams;
   const nextUrl = params?.next || "/my-profile";
@@ -11,7 +16,7 @@ export default async function LoginPage({ searchParams }) {
           <p className="text-sm uppercase tracking-[0.35em] text-black/45">
             Public route
           </p>
-          <h2 className="text-5xl font-semibold tracking-tight text-black">
+          <h2 className="font-display text-6xl font-semibold tracking-tight text-black">
             Log in from the navbar or from a protected page redirect.
           </h2>
           <p className="max-w-xl text-base leading-8 text-black/65">
@@ -20,7 +25,9 @@ export default async function LoginPage({ searchParams }) {
             originally tried to open.
           </p>
         </div>
-        <AuthForm mode="login" nextUrl={nextUrl} />
+        <div className="section-shell rounded-[2.25rem] p-2">
+          <AuthForm mode="login" nextUrl={nextUrl} />
+        </div>
       </div>
     </div>
   );

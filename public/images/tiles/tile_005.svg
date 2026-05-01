@@ -1,13 +1,24 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" fill="none">
   <defs>
-    <linearGradient id="bg" x1="110" y1="110" x2="690" y2="690" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#14532D"/>
-      <stop offset="1" stop-color="#84CC16"/>
+    <linearGradient id="bg" x1="120" y1="130" x2="1080" y2="1080" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0F5132"/>
+      <stop offset="1" stop-color="#6DAA4B"/>
     </linearGradient>
+    <radialGradient id="leafGlow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(650 560) rotate(90) scale(390)">
+      <stop stop-color="#EAF7D7" stop-opacity=".95"/>
+      <stop offset="1" stop-color="#EAF7D7" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="leaves" width="240" height="240" patternUnits="userSpaceOnUse">
+      <path d="M120 34C72 70 60 130 120 206C180 130 168 70 120 34Z" fill="#F1FBE6" fill-opacity=".26"/>
+      <path d="M120 42V198" stroke="#F1FBE6" stroke-opacity=".35" stroke-width="5"/>
+      <path d="M78 100C100 96 108 96 120 100" stroke="#F1FBE6" stroke-opacity=".2" stroke-width="4" stroke-linecap="round"/>
+      <path d="M82 132C104 128 108 128 120 132" stroke="#F1FBE6" stroke-opacity=".2" stroke-width="4" stroke-linecap="round"/>
+      <path d="M78 166C100 162 108 162 120 166" stroke="#F1FBE6" stroke-opacity=".2" stroke-width="4" stroke-linecap="round"/>
+    </pattern>
   </defs>
-  <rect width="800" height="800" rx="72" fill="url(#bg)"/>
-  <path d="M158 520C240 390 314 332 402 292C500 246 576 234 646 228" stroke="#ECFCCB" stroke-width="34" stroke-linecap="round" opacity=".55"/>
-  <path d="M120 640C220 584 304 566 394 574C486 582 568 564 676 508" stroke="#F7FEE7" stroke-width="18" stroke-linecap="round" opacity=".4"/>
-  <circle cx="614" cy="204" r="70" fill="#F7FEE7" opacity=".22"/>
-  <circle cx="220" cy="232" r="34" fill="#DCFCE7" opacity=".22"/>
+  <rect width="1200" height="1200" rx="92" fill="url(#bg)"/>
+  <rect x="82" y="82" width="1036" height="1036" rx="70" fill="url(#leafGlow)" opacity=".33"/>
+  <rect x="108" y="108" width="984" height="984" rx="56" fill="url(#leaves)" opacity=".9"/>
+  <path d="M220 860C340 710 470 650 600 610C730 570 830 470 980 250" stroke="#F3FCE8" stroke-width="52" stroke-linecap="round" opacity=".58"/>
+  <path d="M210 920C360 820 480 780 600 744C730 705 845 620 1000 430" stroke="#EAF7D7" stroke-width="18" stroke-linecap="round" opacity=".38"/>
 </svg>
