@@ -87,14 +87,15 @@ export default async function Home() {
                 {brandValues.map((value) => (
                   <div
                     key={value.title}
-                    className="rounded-[1.5rem] border border-black/10 bg-white/70 p-4 sm:p-5"
+                    className="group rounded-[1.5rem] border border-black/10 bg-white/70 p-4 transition duration-300 hover:-translate-y-1 hover:border-black/20 hover:bg-white hover:shadow-[0_18px_40px_rgba(0,0,0,0.08)] sm:p-5"
                   >
-                    <p className="break-words text-sm font-semibold uppercase tracking-[0.16em] text-black/55 sm:text-[0.95rem]">
+                    <p className="break-words text-sm font-semibold uppercase tracking-[0.16em] text-black/55 transition duration-300 group-hover:text-black sm:text-[0.95rem]">
                       {value.title}
                     </p>
-                    <p className="mt-3 text-sm leading-6 text-black/65 sm:text-[0.95rem] sm:leading-7">
+                    <p className="mt-3 text-sm leading-6 text-black/65 transition duration-300 group-hover:text-black/75 sm:text-[0.95rem] sm:leading-7">
                       {value.description}
                     </p>
+                    <div className="mt-4 h-px w-0 bg-gradient-to-r from-[#d8b06a] to-transparent transition-all duration-300 group-hover:w-full" />
                   </div>
                 ))}
               </div>
