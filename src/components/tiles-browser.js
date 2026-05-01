@@ -91,7 +91,12 @@ export default function TilesBrowser({ tiles, categories = [], initialCategory =
       {filteredTiles.length ? (
         <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
           {filteredTiles.map((tile) => (
-            <TileCard key={tile.id} tile={tile} compact />
+            <TileCard
+              key={tile.id}
+              tile={tile}
+              compact
+              featured={tile.id === "tile_004"}
+            />
           ))}
         </div>
       ) : (
