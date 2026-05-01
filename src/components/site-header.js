@@ -11,6 +11,20 @@ const navLinks = [
   { href: "/my-profile", label: "My Profile" },
 ];
 
+function LogoMark() {
+  return (
+    <span
+      aria-hidden="true"
+      className="grid h-12 w-12 grid-cols-2 gap-1 rounded-2xl border border-black/10 bg-[#111] p-2 shadow-sm"
+    >
+      <span className="rounded-[0.35rem] bg-[#efe2c8]" />
+      <span className="rounded-[0.35rem] bg-[#caa66b]" />
+      <span className="rounded-[0.35rem] bg-[#8e7a63]" />
+      <span className="rounded-[0.35rem] bg-[#f6f0e6]" />
+    </span>
+  );
+}
+
 export default function SiteHeader() {
   const pathname = usePathname();
   const router = useRouter();
@@ -30,9 +44,7 @@ export default function SiteHeader() {
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between gap-4 py-4">
           <Link href="/" className="flex items-center gap-3">
-            <span className="flex h-12 w-12 items-center justify-center rounded-2xl border border-black/10 bg-black text-sm font-semibold tracking-[0.28em] text-white shadow-sm">
-              TG
-            </span>
+            <LogoMark />
             <span className="leading-tight">
               <span className="block font-display text-2xl font-semibold tracking-tight text-black">
                 Tiles Gallery
