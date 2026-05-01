@@ -53,7 +53,7 @@ export default async function Home() {
 
       <section className="mx-auto w-full max-w-7xl px-4 py-8 sm:px-6 lg:px-8 lg:py-12">
         <div className="rounded-[2.25rem] border border-black/10 bg-white/50 p-4 shadow-[0_20px_70px_rgba(0,0,0,0.06)] backdrop-blur md:p-6">
-          <div className="grid gap-8 lg:grid-cols-[1.08fr_0.92fr] lg:items-stretch">
+          <div className="grid gap-8 lg:grid-cols-[1.08fr_0.92fr] lg:items-start">
             <div className="flex flex-col justify-between gap-8 rounded-[1.75rem] border border-black/8 bg-[#f8f3ea] p-6 sm:p-8 lg:p-10">
               <div className="space-y-6">
                 <div className="inline-flex rounded-full border border-black/10 bg-white/75 px-4 py-2 text-xs font-semibold uppercase tracking-[0.35em] text-black/55">
@@ -83,16 +83,16 @@ export default async function Home() {
                 </Link>
               </div>
 
-              <div className="grid gap-4 sm:grid-cols-3">
+              <div className="grid gap-4 md:grid-cols-3">
                 {brandValues.map((value) => (
                   <div
                     key={value.title}
-                    className="rounded-[1.5rem] border border-black/10 bg-white/70 p-4"
+                    className="rounded-[1.5rem] border border-black/10 bg-white/70 p-4 sm:p-5"
                   >
-                    <p className="text-sm font-semibold uppercase tracking-[0.22em] text-black/55">
+                    <p className="break-words text-sm font-semibold uppercase tracking-[0.16em] text-black/55 sm:text-[0.95rem]">
                       {value.title}
                     </p>
-                    <p className="mt-3 text-sm leading-6 text-black/65">
+                    <p className="mt-3 text-sm leading-6 text-black/65 sm:text-[0.95rem] sm:leading-7">
                       {value.description}
                     </p>
                   </div>
@@ -100,9 +100,9 @@ export default async function Home() {
               </div>
             </div>
 
-            <div className="grid gap-4">
-              <div className="grid gap-4 sm:grid-cols-[1.3fr_0.7fr]">
-                <div className="relative min-h-[360px] overflow-hidden rounded-[1.75rem] border border-black/10 bg-black/5">
+            <div className="grid gap-4 self-start">
+              <div className="grid gap-4">
+                <div className="relative min-h-[410px] overflow-hidden rounded-[2rem] border border-black/10 bg-black/5">
                   <Image
                     src={heroTiles[0]?.image || "/images/tiles/34-TAPOLLO-18A-APOLLO-18-thumbnail-410x410-70.jpg"}
                     alt={heroTiles[0]?.title || "Featured tile"}
@@ -110,46 +110,85 @@ export default async function Home() {
                     priority
                     className="object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent" />
-                  <div className="absolute bottom-4 left-4 right-4 rounded-[1.4rem] border border-white/20 bg-black/45 p-4 text-white backdrop-blur">
-                    <p className="text-[11px] uppercase tracking-[0.3em] text-white/55">
-                      Featured collection
-                    </p>
-                    <p className="mt-2 text-xl font-semibold">
-                      {heroTiles[0]?.title}
-                    </p>
-                    <p className="mt-1 text-sm text-white/70">
-                      {heroTiles[0]?.styleDescription}
-                    </p>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/10 to-transparent" />
+                  <div className="absolute left-4 top-4 rounded-full border border-white/20 bg-black/35 px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.3em] text-white/75 backdrop-blur">
+                    Featured collection
+                  </div>
+                  <div className="absolute bottom-4 left-4 right-4 grid gap-3">
+                    <div className="rounded-[1.35rem] border border-white/18 bg-black/40 p-4 text-white backdrop-blur">
+                      <p className="text-[10px] uppercase tracking-[0.3em] text-white/55">
+                        Surface of the moment
+                      </p>
+                      <p className="mt-2 text-xl font-semibold">
+                        {heroTiles[0]?.title}
+                      </p>
+                      <p className="mt-1 text-sm text-white/70">
+                        {heroTiles[0]?.styleDescription}
+                      </p>
+                    </div>
+                    <div className="grid gap-3 sm:grid-cols-3">
+                      <div className="rounded-[1.1rem] border border-white/18 bg-white/15 p-3 text-white backdrop-blur">
+                        <p className="text-[10px] uppercase tracking-[0.28em] text-white/55">
+                          Collection
+                        </p>
+                        <p className="mt-1 text-sm font-semibold">
+                          {featuredTiles.length} Curated tiles
+                        </p>
+                      </div>
+                      <div className="rounded-[1.1rem] border border-white/18 bg-white/15 p-3 text-white backdrop-blur">
+                        <p className="text-[10px] uppercase tracking-[0.28em] text-white/55">
+                          Finish
+                        </p>
+                        <p className="mt-1 text-sm font-semibold">
+                          Stone, marble, porcelain
+                        </p>
+                      </div>
+                      <div className="rounded-[1.1rem] border border-white/18 bg-white/15 p-3 text-white backdrop-blur">
+                        <p className="text-[10px] uppercase tracking-[0.28em] text-white/55">
+                          Mood
+                        </p>
+                        <p className="mt-1 text-sm font-semibold">
+                          Warm, refined, tactile
+                        </p>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
-                <div className="grid gap-4">
-                  {heroTiles.slice(1).map((tile) => (
-                    <div
-                      key={tile.id}
-                      className="relative min-h-[168px] overflow-hidden rounded-[1.75rem] border border-black/10 bg-black/5"
-                    >
-                      <Image
-                        src={tile.image}
-                        alt={tile.title}
-                        fill
-                        className="object-cover"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/5 to-transparent" />
-                      <div className="absolute bottom-4 left-4 right-4 rounded-[1.25rem] border border-white/20 bg-black/40 p-4 text-white backdrop-blur">
-                        <p className="text-[10px] uppercase tracking-[0.3em] text-white/55">
-                          {tile.category}
-                        </p>
-                        <p className="mt-1 text-base font-semibold">{tile.title}</p>
-                      </div>
+                <div className="grid gap-4 sm:grid-cols-[0.75fr_1.25fr]">
+                  <div className="relative min-h-[178px] overflow-hidden rounded-[1.65rem] border border-black/10 bg-black/5">
+                    <Image
+                      src={heroTiles[1]?.image || heroTiles[0]?.image}
+                      alt={heroTiles[1]?.title || heroTiles[0]?.title || "Tile preview"}
+                      fill
+                      className="object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/5 to-transparent" />
+                    <div className="absolute bottom-4 left-4 right-4 text-white">
+                      <p className="text-[10px] uppercase tracking-[0.3em] text-white/55">
+                        Preview
+                      </p>
+                      <p className="mt-1 text-base font-semibold">
+                        {heroTiles[1]?.title || "Balanced surface"}
+                      </p>
                     </div>
-                  ))}
-                </div>
-              </div>
+                  </div>
 
-              <div className="overflow-hidden rounded-[1.75rem] border border-black/10 bg-white/75 px-5 py-4">
-                <Marquee items={marqueeItems} />
+                  <div className="grid gap-4">
+                    <div className="rounded-[1.65rem] border border-black/10 bg-white/80 p-4 shadow-[0_14px_40px_rgba(0,0,0,0.05)]">
+                      <p className="text-[10px] uppercase tracking-[0.3em] text-black/45">
+                        Editorial note
+                      </p>
+                      <p className="mt-3 text-sm leading-6 text-black/70">
+                        A quieter arrangement that lets the tile texture lead,
+                        with supporting details kept compact and intentional.
+                      </p>
+                    </div>
+                    <div className="overflow-hidden rounded-[1.65rem] border border-black/10 bg-white/75 p-4">
+                      <Marquee items={marqueeItems} />
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
