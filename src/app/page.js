@@ -328,14 +328,15 @@ export default async function Home() {
               ].map((item) => (
                 <div
                   key={item.title}
-                  className="rounded-[1.5rem] border border-black/10 bg-white/75 p-5"
+                  className="group rounded-[1.5rem] border border-black/10 bg-white/75 p-5 transition duration-300 hover:-translate-y-1 hover:border-black/20 hover:bg-white hover:shadow-[0_18px_40px_rgba(0,0,0,0.08)]"
                 >
-                  <h3 className="font-display text-2xl font-semibold tracking-tight text-black">
+                  <h3 className="font-display text-2xl font-semibold tracking-tight text-black transition duration-300 group-hover:translate-x-1">
                     {item.title}
                   </h3>
-                  <p className="mt-3 text-sm leading-6 text-black/66">
+                  <p className="mt-3 text-sm leading-6 text-black/66 transition duration-300 group-hover:text-black/78">
                     {item.text}
                   </p>
+                  <div className="mt-4 h-px w-0 bg-gradient-to-r from-[#d8b06a] to-transparent transition-all duration-300 group-hover:w-full" />
                 </div>
               ))}
             </div>
