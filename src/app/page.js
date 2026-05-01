@@ -103,20 +103,22 @@ export default async function Home() {
 
             <div className="grid gap-4 self-start">
               <div className="grid gap-4">
-                <div className="relative min-h-[410px] overflow-hidden rounded-[2rem] border border-black/10 bg-black/5">
+                <div className="group relative min-h-[410px] overflow-hidden rounded-[2rem] border border-black/10 bg-black/5 shadow-[0_18px_50px_rgba(0,0,0,0.08)] transition duration-500 hover:-translate-y-1 hover:shadow-[0_28px_70px_rgba(0,0,0,0.12)]">
                   <Image
                     src={heroTiles[0]?.image || "/images/tiles/34-TAPOLLO-18A-APOLLO-18-thumbnail-410x410-70.jpg"}
                     alt={heroTiles[0]?.title || "Featured tile"}
                     fill
                     priority
-                    className="object-cover"
+                    sizes="(max-width: 1024px) 100vw, 55vw"
+                    className="object-cover transition duration-700 group-hover:scale-[1.03]"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/10 to-transparent" />
-                  <div className="absolute left-4 top-4 rounded-full border border-white/20 bg-black/35 px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.3em] text-white/75 backdrop-blur">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/10 to-transparent transition duration-500 group-hover:from-black/55" />
+                  <div className="absolute inset-0 opacity-0 ring-1 ring-inset ring-[#d8b06a]/20 transition duration-500 group-hover:opacity-100" />
+                  <div className="absolute left-4 top-4 rounded-full border border-white/20 bg-black/35 px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.3em] text-white/75 backdrop-blur transition duration-300 group-hover:bg-black/50">
                     Featured collection
                   </div>
                   <div className="absolute bottom-4 left-4 right-4 grid gap-3">
-                    <div className="rounded-[1.35rem] border border-white/18 bg-black/40 p-4 text-white backdrop-blur">
+                    <div className="rounded-[1.35rem] border border-white/18 bg-black/40 p-4 text-white backdrop-blur transition duration-500 group-hover:bg-black/50">
                       <p className="text-[10px] uppercase tracking-[0.3em] text-white/55">
                         Surface of the moment
                       </p>
@@ -128,7 +130,7 @@ export default async function Home() {
                       </p>
                     </div>
                     <div className="grid gap-3 sm:grid-cols-3">
-                      <div className="rounded-[1.1rem] border border-white/18 bg-white/15 p-3 text-white backdrop-blur">
+                      <div className="rounded-[1.1rem] border border-white/18 bg-white/15 p-3 text-white backdrop-blur transition duration-300 group-hover:-translate-y-0.5 group-hover:bg-white/20">
                         <p className="text-[10px] uppercase tracking-[0.28em] text-white/55">
                           Collection
                         </p>
@@ -136,7 +138,7 @@ export default async function Home() {
                           {featuredTiles.length} Curated tiles
                         </p>
                       </div>
-                      <div className="rounded-[1.1rem] border border-white/18 bg-white/15 p-3 text-white backdrop-blur">
+                      <div className="rounded-[1.1rem] border border-white/18 bg-white/15 p-3 text-white backdrop-blur transition duration-300 group-hover:-translate-y-0.5 group-hover:bg-white/20">
                         <p className="text-[10px] uppercase tracking-[0.28em] text-white/55">
                           Finish
                         </p>
@@ -144,7 +146,7 @@ export default async function Home() {
                           Stone, marble, porcelain
                         </p>
                       </div>
-                      <div className="rounded-[1.1rem] border border-white/18 bg-white/15 p-3 text-white backdrop-blur">
+                      <div className="rounded-[1.1rem] border border-white/18 bg-white/15 p-3 text-white backdrop-blur transition duration-300 group-hover:-translate-y-0.5 group-hover:bg-white/20">
                         <p className="text-[10px] uppercase tracking-[0.28em] text-white/55">
                           Mood
                         </p>
@@ -157,14 +159,16 @@ export default async function Home() {
                 </div>
 
                 <div className="grid gap-4 sm:grid-cols-[0.75fr_1.25fr]">
-                  <div className="relative min-h-[178px] overflow-hidden rounded-[1.65rem] border border-black/10 bg-black/5">
+                  <div className="group relative min-h-[178px] overflow-hidden rounded-[1.65rem] border border-black/10 bg-black/5 shadow-[0_12px_35px_rgba(0,0,0,0.06)] transition duration-500 hover:-translate-y-1 hover:shadow-[0_22px_55px_rgba(0,0,0,0.1)]">
                     <Image
                       src={heroTiles[1]?.image || heroTiles[0]?.image}
                       alt={heroTiles[1]?.title || heroTiles[0]?.title || "Tile preview"}
                       fill
-                      className="object-cover"
+                      sizes="(max-width: 1024px) 100vw, 24vw"
+                      className="object-cover transition duration-700 group-hover:scale-[1.04]"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/5 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/5 to-transparent transition duration-500 group-hover:from-black/45" />
+                    <div className="absolute inset-0 opacity-0 ring-1 ring-inset ring-white/20 transition duration-500 group-hover:opacity-100" />
                     <div className="absolute bottom-4 left-4 right-4 text-white">
                       <p className="text-[10px] uppercase tracking-[0.3em] text-white/55">
                         Preview
@@ -176,7 +180,7 @@ export default async function Home() {
                   </div>
 
                   <div className="grid gap-4">
-                    <div className="rounded-[1.65rem] border border-black/10 bg-white/80 p-4 shadow-[0_14px_40px_rgba(0,0,0,0.05)]">
+                    <div className="rounded-[1.65rem] border border-black/10 bg-white/80 p-4 shadow-[0_14px_40px_rgba(0,0,0,0.05)] transition duration-500 hover:-translate-y-1 hover:border-black/20 hover:bg-white hover:shadow-[0_20px_50px_rgba(0,0,0,0.09)]">
                       <p className="text-[10px] uppercase tracking-[0.3em] text-black/45">
                         Editorial note
                       </p>
@@ -185,7 +189,7 @@ export default async function Home() {
                         with supporting details kept compact and intentional.
                       </p>
                     </div>
-                    <div className="overflow-hidden rounded-[1.65rem] border border-black/10 bg-white/75 p-4">
+                    <div className="overflow-hidden rounded-[1.65rem] border border-black/10 bg-white/75 p-4 transition duration-500 hover:-translate-y-1 hover:bg-white hover:shadow-[0_20px_50px_rgba(0,0,0,0.08)]">
                       <Marquee items={marqueeItems} />
                     </div>
                   </div>
