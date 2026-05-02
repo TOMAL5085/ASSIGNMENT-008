@@ -25,6 +25,27 @@ function LogoMark() {
   );
 }
 
+function ProfileBadge({ user }) {
+  const label = user?.name || user?.email || "Profile";
+  const initial = (user?.name || user?.email || "?").slice(0, 1).toUpperCase();
+
+  return (
+    <span className="inline-flex items-center gap-3 rounded-full border border-black/10 bg-white/70 px-3 py-2 transition hover:bg-white">
+      <span className="flex h-9 w-9 items-center justify-center overflow-hidden rounded-full bg-black text-xs font-semibold uppercase text-white">
+        {user?.image ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img src={user.image} alt={label} className="h-full w-full object-cover" />
+        ) : (
+          initial
+        )}
+      </span>
+      <span className="max-w-[7rem] truncate text-sm font-semibold text-black">
+        {label}
+      </span>
+    </span>
+  );
+}
+
 export default function SiteHeader() {
   const pathname = usePathname();
   const router = useRouter();
@@ -81,8 +102,8 @@ export default function SiteHeader() {
                 </Link>
               ) : (
                 <>
-                  <Link href="/my-profile" className="btn rounded-full border-black/10 bg-transparent text-black hover:bg-black/5">
-                    Profile
+                  <Link href="/my-profile" className="group">
+                    <ProfileBadge user={session.user} />
                   </Link>
                   <button
                     type="button"
@@ -121,8 +142,8 @@ export default function SiteHeader() {
                     </Link>
                   ) : (
                     <>
-                      <Link href="/my-profile" className="btn w-full rounded-full border-black/10 bg-transparent text-black">
-                        Profile
+                      <Link href="/my-profile" className="w-full">
+                        <ProfileBadge user={session.user} />
                       </Link>
                       <button
                         type="button"
