@@ -4,7 +4,8 @@ import { notFound } from "next/navigation";
 import { getTileById } from "@/lib/tiles";
 
 export async function generateMetadata({ params }) {
-  const tile = await getTileById(params.id);
+  const { id } = await params;
+  const tile = await getTileById(id);
 
   if (!tile) {
     return {
@@ -19,7 +20,8 @@ export async function generateMetadata({ params }) {
 }
 
 export default async function TileDetailsPage({ params }) {
-  const tile = await getTileById(params.id);
+  const { id } = await params;
+  const tile = await getTileById(id);
 
   if (!tile) {
     notFound();
