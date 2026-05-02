@@ -8,7 +8,7 @@ The app helps users browse tile designs, view tile details, sign in with email/p
 
 ## Live URL
 
-https://your-project.vercel.app
+https://assignment-008.vercel.app
 
 ## Key Features
 
