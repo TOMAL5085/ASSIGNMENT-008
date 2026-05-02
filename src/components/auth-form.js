@@ -7,6 +7,15 @@ import toast from "react-hot-toast";
 
 import { authClient } from "@/lib/auth-client";
 
+function fileToDataUrl(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = () => reject(new Error("Could not read the selected image"));
+    reader.readAsDataURL(file);
+  });
+}
+
 export default function AuthForm({ mode = "login", nextUrl = "/" }) {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
@@ -21,9 +30,9 @@ export default function AuthForm({ mode = "login", nextUrl = "/" }) {
 
     const formData = new FormData(event.currentTarget);
     const name = formData.get("name")?.toString().trim();
-    const image = formData.get("image")?.toString().trim();
     const email = formData.get("email")?.toString().trim();
     const password = formData.get("password")?.toString();
+    const imageFile = formData.get("imageFile");
 
     try {
       if (isLogin) {
@@ -34,6 +43,12 @@ export default function AuthForm({ mode = "login", nextUrl = "/" }) {
         });
         toast.success("Logged in successfully");
       } else {
+        let image = "";
+
+        if (imageFile instanceof File && imageFile.size > 0) {
+          image = await fileToDataUrl(imageFile);
+        }
+
         await authClient.signUp.email({
           name,
           email,
@@ -102,14 +117,17 @@ export default function AuthForm({ mode = "login", nextUrl = "/" }) {
 
         {!isLogin ? (
           <label className="grid gap-2">
-            <span className="text-sm font-medium text-black">Photo URL</span>
+            <span className="text-sm font-medium text-black">Upload Photo</span>
             <input
-              name="image"
-              type="url"
+              name="imageFile"
+              type="file"
+              accept="image/*"
               required
-              className="input input-bordered h-12 rounded-2xl border-black/10 bg-white"
-              placeholder="https://example.com/photo.jpg"
+              className="file-input file-input-bordered h-12 rounded-2xl border-black/10 bg-white px-4 py-2 text-sm"
             />
+            <p className="text-xs text-black/45">
+              Upload a photo from your device. It will be saved with your account.
+            </p>
           </label>
         ) : null}
 

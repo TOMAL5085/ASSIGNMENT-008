@@ -2,7 +2,7 @@ import AuthForm from "@/components/auth-form";
 
 export const metadata = {
   title: "Register | Tiles Gallery",
-  description: "Create a Tiles Gallery account with your name, email, photo URL, and password.",
+  description: "Create a Tiles Gallery account with your name, email, uploaded photo, and password.",
 };
 
 export default async function RegisterPage({ searchParams }) {
@@ -20,7 +20,7 @@ export default async function RegisterPage({ searchParams }) {
             Register and join the tile gallery community.
           </h2>
           <p className="max-w-xl text-base leading-8 text-black/65">
-            Create an account with your name, email, photo URL, and password.
+            Create an account with your name, email, uploaded photo, and password.
             After successful registration, users return to the login page.
           </p>
         </div>
