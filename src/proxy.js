@@ -16,7 +16,7 @@ async function getSession(request) {
   }
 
   const payload = await sessionResponse.json().catch(() => null);
-  return payload?.data ?? null;
+  return payload?.data ?? payload ?? null;
 }
 
 export async function proxy(request) {
