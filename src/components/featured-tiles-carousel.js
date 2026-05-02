@@ -48,7 +48,7 @@ export default function FeaturedTilesCarousel({ tiles }) {
                     {tile.tags?.map((tag) => (
                       <span
                         key={tag}
-                        className="rounded-full bg-black/5 px-3 py-1 text-xs font-medium text-black/70"
+                        className="inline-flex min-h-9 items-center justify-center rounded-full bg-black/5 px-3 py-1.5 text-xs font-medium leading-none text-black/70"
                       >
                         {tag}
                       </span>

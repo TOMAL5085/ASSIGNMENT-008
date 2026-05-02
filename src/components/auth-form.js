@@ -169,7 +169,13 @@ export default function AuthForm({ mode = "login", nextUrl = "/" }) {
         </button>
       </form>
 
-      <div className="grid gap-4 border-t border-black/10 pt-6">
+      <div className="grid gap-4 pt-2">
+        <div className="flex items-center gap-3 text-[11px] uppercase tracking-[0.35em] text-black/35">
+          <span className="h-px flex-1 bg-black/10" />
+          <span>Or</span>
+          <span className="h-px flex-1 bg-black/10" />
+        </div>
+
         <button
           type="button"
           onClick={handleGoogleLogin}

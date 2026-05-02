@@ -57,7 +57,11 @@ export default function TileCard({ tile, compact = false, featured = false }) {
           {tile.tags?.slice(0, 3).map((tag) => (
             <span
               key={tag}
-              className={`rounded-full bg-black/5 font-medium text-black/70 ${compact ? "px-2.5 py-1 text-[11px]" : "px-3 py-1 text-xs"}`}
+              className={`inline-flex items-center justify-center rounded-full bg-black/5 font-medium leading-none text-black/70 ${
+                compact
+                  ? "min-h-8 px-2.5 py-1 text-[11px]"
+                  : "min-h-9 px-3 py-1.5 text-xs"
+              }`}
             >
               {tag}
             </span>
