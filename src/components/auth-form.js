@@ -39,7 +39,7 @@ export default function AuthForm({ mode = "login", nextUrl = "/" }) {
         await authClient.signIn.email({
           email,
           password,
-          callbackURL: nextUrl,
+          callbackURL: "/",
         });
         toast.success("Logged in successfully");
       } else {
@@ -59,7 +59,7 @@ export default function AuthForm({ mode = "login", nextUrl = "/" }) {
         toast.success("Registration successful");
       }
 
-      router.push(isLogin ? nextUrl : "/login");
+      router.push(isLogin ? "/" : "/login");
       router.refresh();
     } catch (error) {
       const message = error?.message || "Something went wrong";
@@ -76,7 +76,7 @@ export default function AuthForm({ mode = "login", nextUrl = "/" }) {
     try {
       await authClient.signIn.social({
         provider: "google",
-        callbackURL: isLogin ? nextUrl : "/",
+        callbackURL: isLogin ? "/" : "/",
       });
     } catch (error) {
       const message = error?.message || "Google sign in failed";

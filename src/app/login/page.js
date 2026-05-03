@@ -6,9 +6,6 @@ export const metadata = {
 };
 
 export default async function LoginPage({ searchParams }) {
-  const params = await searchParams;
-  const nextUrl = params?.next || "/my-profile";
-
   return (
     <div className="mx-auto flex w-full max-w-7xl flex-1 items-center px-4 py-12 sm:px-6 lg:px-8">
       <div className="grid w-full gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
@@ -26,7 +23,7 @@ export default async function LoginPage({ searchParams }) {
           </p>
         </div>
         <div className="section-shell rounded-[2.25rem] p-2">
-          <AuthForm mode="login" nextUrl={nextUrl} />
+          <AuthForm mode="login" nextUrl="/" />
         </div>
       </div>
     </div>
