@@ -36,11 +36,18 @@ export default function AuthForm({ mode = "login", nextUrl = "/" }) {
 
     try {
       if (isLogin) {
-        await authClient.signIn.email({
+        const result = await authClient.signIn.email({
           email,
           password,
           callbackURL: "/",
         });
+
+        if (result?.error || !result?.data) {
+          throw new Error(
+            result?.error?.message || "Invalid email or password"
+          );
+        }
+
         toast.success("Logged in successfully");
       } else {
         let image = "";
@@ -49,13 +56,20 @@ export default function AuthForm({ mode = "login", nextUrl = "/" }) {
           image = await fileToDataUrl(imageFile);
         }
 
-        await authClient.signUp.email({
+        const result = await authClient.signUp.email({
           name,
           email,
           password,
           image,
           callbackURL: "/login",
         });
+
+        if (result?.error || !result?.data) {
+          throw new Error(
+            result?.error?.message || "Registration failed"
+          );
+        }
+
         toast.success("Registration successful");
       }
 
