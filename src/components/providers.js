@@ -1,27 +1,41 @@
 'use client';
 
-import { useEffect } from "react";
-import { usePathname } from "next/navigation";
+import { Suspense, useEffect } from "react";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { Toaster } from "react-hot-toast";
 import toast from "react-hot-toast";
 
 function AuthToastBridge() {
+  const router = useRouter();
   const pathname = usePathname();
+  const searchParams = useSearchParams();
 
   useEffect(() => {
-    if (typeof window === "undefined") {
+    const authStatus = searchParams.get("auth");
+    if (!authStatus) {
       return;
     }
 
-    const message = window.sessionStorage.getItem("tiles-gallery-auth-toast");
+    const message =
+      authStatus === "login-success"
+        ? "Logged in successfully"
+        : authStatus === "register-success"
+          ? "Registration successful"
+          : null;
 
     if (!message) {
       return;
     }
 
-    window.sessionStorage.removeItem("tiles-gallery-auth-toast");
     toast.success(message);
-  }, [pathname]);
+
+    const params = new URLSearchParams(searchParams.toString());
+    params.delete("auth");
+    const query = params.toString();
+    router.replace(query ? `${pathname}?${query}` : pathname, {
+      scroll: false,
+    });
+  }, [pathname, router, searchParams]);
 
   return null;
 }
@@ -29,7 +43,9 @@ function AuthToastBridge() {
 export default function Providers({ children }) {
   return (
     <>
-      <AuthToastBridge />
+      <Suspense fallback={null}>
+        <AuthToastBridge />
+      </Suspense>
       {children}
       <Toaster position="top-right" toastOptions={{ duration: 3500 }} />
     </>
