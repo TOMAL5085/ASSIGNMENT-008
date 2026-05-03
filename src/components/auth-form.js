@@ -20,6 +20,14 @@ function pause(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
+function queueAuthToast(message) {
+  if (typeof window === "undefined") {
+    return;
+  }
+
+  window.sessionStorage.setItem("tiles-gallery-auth-toast", message);
+}
+
 export default function AuthForm({ mode = "login", nextUrl = "/" }) {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
@@ -52,8 +60,8 @@ export default function AuthForm({ mode = "login", nextUrl = "/" }) {
           );
         }
 
-        toast.success("Logged in successfully");
-        await pause(250);
+        queueAuthToast("Logged in successfully");
+        await pause(50);
       } else {
         let image = "";
 
@@ -75,8 +83,8 @@ export default function AuthForm({ mode = "login", nextUrl = "/" }) {
           );
         }
 
-        toast.success("Registration successful");
-        await pause(250);
+        queueAuthToast("Registration successful");
+        await pause(50);
       }
 
       router.push(isLogin ? "/" : "/login");
