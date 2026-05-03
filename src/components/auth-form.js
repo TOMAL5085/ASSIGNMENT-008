@@ -16,6 +16,10 @@ function fileToDataUrl(file) {
   });
 }
 
+function pause(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
 export default function AuthForm({ mode = "login", nextUrl = "/" }) {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
@@ -49,6 +53,7 @@ export default function AuthForm({ mode = "login", nextUrl = "/" }) {
         }
 
         toast.success("Logged in successfully");
+        await pause(250);
       } else {
         let image = "";
 
@@ -71,6 +76,7 @@ export default function AuthForm({ mode = "login", nextUrl = "/" }) {
         }
 
         toast.success("Registration successful");
+        await pause(250);
       }
 
       router.push(isLogin ? "/" : "/login");
