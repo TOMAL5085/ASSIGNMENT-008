@@ -97,7 +97,7 @@ export default function AuthForm({ mode = "login", nextUrl = "/" }) {
         </h1>
         <p className="mt-3 max-w-xl text-sm leading-7 text-black/65">
           {isLogin
-            ? "Users can reach this page from the navbar Login button or the protected-route redirect when they try to open a private page."
+            ? "Users can reach this page from the navbar Login button or the protected-route redirect when they try to open a private page. Successful login sends them to the home page, and any error is shown here and as a toast."
             : "New users can join from this form and then return to the login page."}
         </p>
       </div>
