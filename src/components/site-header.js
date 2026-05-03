@@ -51,6 +51,18 @@ export default function SiteHeader() {
   const router = useRouter();
   const { data: session } = authClient.useSession();
 
+  function handleLogoClick(event) {
+    event.preventDefault();
+    if (pathname === "/") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      return;
+    }
+
+    router.push("/");
+    router.refresh();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
   async function handleLogout() {
     try {
       await authClient.signOut();
@@ -64,7 +76,7 @@ export default function SiteHeader() {
     <header className="sticky top-0 z-50 border-b border-black/10 bg-[#f6f0e6]/85 backdrop-blur-xl">
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between gap-4 py-4">
-          <Link href="/" className="flex items-center gap-3">
+          <Link href="/" className="flex items-center gap-3" onClick={handleLogoClick}>
             <LogoMark />
             <span className="leading-tight">
               <span className="block font-display text-2xl font-semibold tracking-tight text-black">

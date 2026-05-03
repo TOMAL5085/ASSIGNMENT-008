@@ -6,6 +6,15 @@ import toast from "react-hot-toast";
 
 import { authClient } from "@/lib/auth-client";
 
+function fileToDataUrl(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = () => reject(new Error("Could not read the selected image"));
+    reader.readAsDataURL(file);
+  });
+}
+
 export default function UpdateProfileForm() {
   const router = useRouter();
   const { data: session, isPending } = authClient.useSession();
@@ -15,14 +24,22 @@ export default function UpdateProfileForm() {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
     const name = formData.get("name")?.toString().trim();
-    const image = formData.get("image")?.toString().trim();
+    const imageFile = formData.get("imageFile");
 
     setLoading(true);
     try {
-      await authClient.updateUser({
-        name,
-        image: image || null,
-      });
+      const payload = { name };
+
+      if (imageFile instanceof File && imageFile.size > 0) {
+        payload.image = await fileToDataUrl(imageFile);
+      }
+
+      const result = await authClient.updateUser(payload);
+
+      if (result?.error || !result?.data?.status) {
+        throw new Error(result?.error?.message || "Failed to update profile");
+      }
+
       toast.success("Profile updated successfully");
       router.push("/my-profile");
       router.refresh();
@@ -65,14 +82,33 @@ export default function UpdateProfileForm() {
         </label>
 
         <label className="grid gap-2">
-          <span className="text-sm font-medium text-black">Image URL</span>
+          <span className="text-sm font-medium text-black">Upload Photo</span>
           <input
-            name="image"
-            defaultValue={session?.user?.image || ""}
-            className="input input-bordered h-12 rounded-2xl border-black/10 bg-white"
-            placeholder="https://example.com/photo.jpg"
+            name="imageFile"
+            type="file"
+            accept="image/*"
+            className="file-input file-input-bordered h-12 rounded-2xl border-black/10 bg-white px-4 py-2 text-sm"
           />
+          <p className="text-xs text-black/45">
+            Choose a photo from your device to update your profile picture.
+            Leave it empty if you only want to change your name.
+          </p>
         </label>
+
+        {session?.user?.image ? (
+          <div className="flex items-center gap-3 rounded-2xl border border-black/10 bg-black/5 p-3">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={session.user.image}
+              alt={session?.user?.name || "Profile photo"}
+              className="h-14 w-14 rounded-full object-cover"
+            />
+            <div className="text-sm text-black/65">
+              <p className="font-medium text-black">Current photo</p>
+              <p>This will be replaced if you upload a new one.</p>
+            </div>
+          </div>
+        ) : null}
 
         <button type="submit" className="btn btn-neutral h-12 rounded-full" disabled={loading}>
           {loading ? "Updating..." : "Update Information"}

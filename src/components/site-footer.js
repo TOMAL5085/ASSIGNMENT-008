@@ -1,4 +1,7 @@
+'use client';
+
 import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 
 const socials = [
   {
@@ -128,17 +131,36 @@ function MailIcon() {
 }
 
 export default function SiteFooter() {
+  const pathname = usePathname();
+  const router = useRouter();
+
+  function handleLogoClick(event) {
+    event.preventDefault();
+    if (pathname === "/") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      return;
+    }
+
+    router.push("/");
+    router.refresh();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
   return (
     <footer className="mt-auto border-t border-black/10 bg-[#14110f] text-white">
       <div className="mx-auto w-full max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
         <div className="grid gap-10 lg:grid-cols-[1.2fr_0.8fr_0.9fr]">
           <div className="space-y-6">
-            <div className="inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.34em] text-white/55">
+            <Link
+              href="/"
+              onClick={handleLogoClick}
+              className="inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.34em] text-white/55 transition hover:bg-white/10"
+            >
               <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#d8b06a] text-[10px] font-bold tracking-[0.22em] text-black">
                 TG
               </span>
               Tiles Gallery
-            </div>
+            </Link>
 
             <div className="max-w-xl space-y-4">
               <h2 className="font-display text-4xl font-semibold tracking-tight sm:text-5xl">
