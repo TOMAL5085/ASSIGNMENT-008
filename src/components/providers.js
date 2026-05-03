@@ -17,11 +17,9 @@ function AuthToastBridge() {
     }
 
     const message =
-      authStatus === "login-success"
-        ? "Logged in successfully"
-        : authStatus === "register-success"
-          ? "Registration successful"
-          : null;
+      authStatus === "register-success"
+        ? "Registration successful"
+        : null;
 
     if (!message) {
       return;

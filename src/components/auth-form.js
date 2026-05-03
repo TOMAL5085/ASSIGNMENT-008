@@ -77,7 +77,7 @@ export default function AuthForm({ mode = "login", nextUrl = "/" }) {
         await pause(50);
       }
 
-      router.push(isLogin ? "/?auth=login-success" : "/login?auth=register-success");
+      router.push(isLogin ? "/" : "/login?auth=register-success");
       router.refresh();
     } catch (error) {
       const message = error?.message || "Something went wrong";
@@ -94,7 +94,7 @@ export default function AuthForm({ mode = "login", nextUrl = "/" }) {
     try {
       await authClient.signIn.social({
         provider: "google",
-        callbackURL: isLogin ? "/?auth=login-success" : "/login?auth=register-success",
+        callbackURL: isLogin ? "/" : "/login?auth=register-success",
       });
     } catch (error) {
       const message = error?.message || "Google sign in failed";
